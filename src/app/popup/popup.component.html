@@ -1,0 +1,173 @@
+
+
+
+
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Post User</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <mat-tab-group mat-align-tabs="center"   animationDuration="700ms">
+      <mat-tab label="Info">
+        <form class="well form-horizontal" form  #postForm="ngForm">
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-12">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" [(ngModel)]="name"  name="name" value="{{name}}" [disabled]="flag"
+                placeholder="Enter your Name" />
+            </div>
+          </div>
+          <div class="form-row col-md-12">
+            <div class="form-group  col-md-12 ">
+              <label>Account No</label>
+              <input type="text" class="form-control" [(ngModel)]="accountno"   placeholder="Enter Account Number" name="accountno"
+                value="{{accountno}}" [disabled]="flag" />
+            </div>
+          </div>
+
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-6">
+              <label for="email">Amount</label>
+
+              <input type="number" class="form-control" [(ngModel)]="amount"   name="amount" placeholder="Enter your amount"
+                value="{{amount}}" [disabled]="flag" />
+            </div>
+
+            <div class="form-group  col-md-6 ">
+              <label>Total Amount</label>
+              <input type="number" class="form-control" [(ngModel)]="totalAmount"   name="totalAmount"  value="{{totalAmount}}"
+              [disabled]="flag" />
+            </div>
+          </div>
+
+          <div class="form-row col-md-12">
+          <div class="form-group col-md-12">
+            <label for="joiningDate">Joining Date:</label>
+             <input  class="form-control"   [(ngModel)]="joiningDate"   name="joiningDate"  value="{{joiningDate}}" readonly >
+            <!-- <input matInput  name="joiningDate" placeholder="Verbose datepicker"  [formControl]="date"   [min]="minDate" [max]="maxDate"  [matDatepicker]="picker" > -->
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" *ngIf="flag == true" class="btn btn-info" (click)="edit(flag)" data-dismiss="modal">Edit</button>
+            <button type="button" *ngIf="flag == false" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-success">Submit</button>
+            <button type="button" *ngIf="flag == true"   data-toggle="modal" data-target="#exampleModal"  class="btn btn-danger">Delete</button>
+            <button type="button" *ngIf="flag == false" (click)="edit(flag)"  class="btn btn-danger">Cancel</button>
+          </div>
+
+          <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Are you sure to make changes ?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" (click)="onEdit(postForm)" data-dismiss="modal">Submit</button>
+                  <button type="button" (click)="edit(flag)" data-dismiss="modal" class="btn btn-primary">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Are you sure to delete the record ?
+                </div>
+                <div class="modal-footer">
+                  <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button"(click)="onDelete()"  data-dismiss="modal" class="btn btn-primary">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Payment">
+        <form class="well form-horizontal" form  #postForm="ngForm">
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-12">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" [(ngModel)]="name"  name="name" value="{{name}}" readonly
+                placeholder="Enter your Name" />
+            </div>
+          </div>
+          <div class="form-row col-md-12">
+            <div class="form-group  col-md-12 ">
+              <label>Account No</label>
+              <input type="text" class="form-control" [(ngModel)]="accountno"   placeholder="Enter Account Number" name="accountno"
+                value="{{accountno}}" readonly />
+            </div>
+          </div>
+
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-6">
+              <label for="email">Amount</label>
+
+              <input type="number" class="form-control" [(ngModel)]="amount"   name="amount" placeholder="Enter your amount"
+                value="{{amount}}" readonly />
+            </div>
+
+            <div class="form-group  col-md-6 ">
+              <label>Total Amount</label>
+              <input type="number" class="form-control" [(ngModel)]="totalAmount"   name="totalAmount"  value="{{totalAmount}}"
+              readonly />
+            </div>
+          </div>
+
+          <div class="form-row col-md-12">
+          <div class="form-group col-md-6">
+            <label for="joiningDate">Payment Date:</label>
+             <input  class="form-control"   [(ngModel)]="joiningDate"   name="joiningDate"  value="{{joiningDate}} " readonly >
+            <!-- <input matInput  name="joiningDate" placeholder="Verbose datepicker"  [formControl]="date"   [min]="minDate" [max]="maxDate"  [matDatepicker]="picker" > -->
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="default">Default:</label>
+             <input  class="form-control"    name="default" readonly >
+          </div>
+          </div>
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-12">
+              <label for="remark">Remark:</label>
+               <input  class="form-control"    name="remark"   readonly >
+            </div>
+            </div>
+
+          <div class="modal-footer">
+            <button type="button" *ngIf="flag == true" class="btn btn-danger"  (click)="modalRef.hide()"  data-dismiss="modal">Close</button>
+          </div>
+
+
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+
+
+
+
+</div>
+
+
+

@@ -1,0 +1,10 @@
+
+.alert
+{
+  font-weight: 500;
+  margin: 0 5px; padding: 0;
+  background-color: transparent;
+   border: transparent;
+   color:#EA2027;
+   font-size: 15px;
+}

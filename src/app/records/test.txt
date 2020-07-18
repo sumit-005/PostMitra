@@ -1,0 +1,89 @@
+<div *ngIf="!loader" style="margin-top: 4rem;">
+
+
+  <div class="filter">
+
+
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      <button type="button" class="btn btn-info" (click)="newUsers()">New Users</button>
+      <button type="button" class="btn btn-warning">Pending Users</button>
+      <button type="button" class="btn btn-success" (click)="exportexcel()">Download</button>
+      <button type="button" class="btn btn-dark" style="padding-right: 5px;" (click)="refresh()">Refresh</button>
+    </div>
+
+  </div>
+  <div class="search">
+    <div class="input-group mb-2 col-md-12 " style="margin-bottom: 0px;">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Search</span>
+      </div>
+      <input type="text" [(ngModel)]=" userFilter.name" class="form-control" style="margin: 0px;"
+        placeholder="Searching Anything" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+  </div>
+
+  <button routerLink="/add-record" class=" flt btn btn-primary"><i class="fas fa-rupee-sign fa-2x"></i></button>
+
+
+
+  <table class="table table-light table-bordered table-hover table-striped" style="table-layout:fixed;height: 100%;"
+    id="excel-table">
+
+
+    <thead>
+
+      <tr class="table-active">
+        <th scope="col" style="width: 10%;padding-right: 5px;margin-right: 5px;">#</th>
+        <th scope="col" style="width: 30%;" (click)="sortname(sortName)">Name
+          <span *ngIf='!sortName'>
+            <i class="fas fa-caret-up"></i>
+          </span>
+          <span *ngIf="sortName">
+            <i class="fas fa-caret-down"></i>
+          </span>
+
+        </th>
+        <th scope="col" style="width: 30%;">Account No</th>
+        <th scope="col" style="width: 30%;" (click)="sortamount(sortAmount)">Amount
+          <span *ngIf='!sortAmount'>
+            <i class="fas fa-caret-up"></i>
+          </span>
+          <span *ngIf="sortAmount">
+            <i class="fas fa-caret-down"></i>
+          </span>
+        </th>
+        <th scope="col" style="width: 30%;">Total Amount</th>
+        <th scope="col" style="width: 30%;">Joining Date</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of returnedArray | filterBy: userFilter;let i = index;" (click)="openModal(item)">
+        <td scope="row" style="width: 10%;">{{i+1}}</td>
+        <td style="width: 30%;">{{item.name  | uppercase}}</td>
+        <td style="width: 30%;">{{item.accountno}}</td>
+        <td style="width: 30%;">{{item.amount }}</td>
+        <td style="width: 30%;">{{item.totalAmount }}</td>
+        <td style="width: 30%;">{{(item.joiningDate === 'Invalid date') ? 'N/A' : (item.joiningDate)  }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+  <div>
+  <span *ngIf="(returnedArray | filterBy: userFilter).length === 0" style="margin-top: 10rem;" >No Data</span>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12 col-12">
+      <pagination [totalItems]="totalRecords" [(ngModel)]="page" [directionLinks]="showDirectionLinks"
+        (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+
+
+
+</div>

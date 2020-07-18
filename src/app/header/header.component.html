@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light ">
+  <a class="navbar-brand" routerLink="/dashboard" style="font-family: 'Pacifico', cursive;color: #130f40; font-size:25px;">Postmitra</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav" >
+
+      <li class="nav-item"routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show"  >
+        <a class="nav-link"   *ngIf="userIsAuthenticated" routerLink="/records">Records</a>
+    </li>
+    <li class="nav-item"routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show"  >
+      <a class="nav-link"   *ngIf="userIsAuthenticated" routerLink="/add-record">Add Record </a>
+  </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item"routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show" >
+           <a class="nav-link"   *ngIf="!userIsAuthenticated" routerLink="/login">Login<i class="fas fa-sign-in-alt" style="margin-left: 5px;"></i></a>
+      </li>
+      <li class="nav-item " routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show"  >
+          <a class="nav-link"   *ngIf="!userIsAuthenticated" routerLink="/register">Signup<i class="fas fa-user-plus" style="margin-left: 5px;"></i></a>
+      </li>
+      <li class="nav-item " routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show" >
+        <a class="nav-link" style="cursor: pointer;" *ngIf="userIsAuthenticated" (click)="onLogout()">Logout<i class="fas fa-sign-in-alt" style="margin-left: 5px;"></i></a>
+    </li>
+
+    </ul>
+  </div>
+</nav>

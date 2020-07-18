@@ -1,0 +1,119 @@
+{
+  "configVersion": 1,
+  "timestamp": 1594711212498,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.3b787c503f59d54b5d02.js",
+        "/main-es5.3b787c503f59d54b5d02.js",
+        "/manifest.webmanifest",
+        "/polyfills-es2015.e4301f567d405fdace91.js",
+        "/polyfills-es5.e6357a4e63f9e93d4fef.js",
+        "/runtime-es2015.c5fa8325f89fc516600b.js",
+        "/runtime-es5.c5fa8325f89fc516600b.js",
+        "/scripts.86b70c7c463b077c1a6b.js",
+        "/styles.16284bfbe542db3eff6c.css"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css2\\?family=Roboto:wght@100&display=swap",
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css2\\?family=Roboto:wght@400&display=swap",
+        "https:\\/\\/kit\\.fontawesome\\.com\\/df6429e78f\\.js",
+        "https:\\/\\/kit-free\\.fontawesome\\.com\\/releases\\/latest\\/webfonts\\/[^/]*"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/apple-touch-icon.png",
+        "/assets/icons/favicon-16x16.png",
+        "/assets/icons/favicon-32x32.png",
+        "/assets/icons/favicon.ico",
+        "/assets/icons/hdpi.png",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-256x256.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/icons/mdpi.png",
+        "/assets/icons/xhdpi.png",
+        "/assets/icons/xxhdpi.png",
+        "/assets/money-2696229.jpg",
+        "/money-2696229.0cff5527c8560eeaf6c2.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "postingo",
+      "patterns": [
+        "https:\\/\\/postingo\\.herokuapp\\.com\\/[^/]*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 10,
+      "maxAge": 3600000,
+      "timeoutMs": 10000,
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/assets/icons/apple-touch-icon.png": "1ab65aef83a49800ed737d49f6a74b296945de6e",
+    "/assets/icons/favicon-16x16.png": "ecd0d8a77059be83a618777ed3619d9644692eb2",
+    "/assets/icons/favicon-32x32.png": "8426a52870ce07d7a7e967416fe6dd3a61f6bb77",
+    "/assets/icons/favicon.ico": "030b5ba9b118f58e3126dbdde7eb804a3534da2d",
+    "/assets/icons/hdpi.png": "eb50d80abe4542787284d39ea4c97553ff8aa98b",
+    "/assets/icons/icon-128x128.png": "186b5a1e543c2bd4d70ff438d785320e8215fe7e",
+    "/assets/icons/icon-144x144.png": "ce99c413380bffb954799ffc9c606b651358a144",
+    "/assets/icons/icon-152x152.png": "e7c2074617f281ff63602db92d43183edb99d6a9",
+    "/assets/icons/icon-192x192.png": "c25d9f7bf5d4c23d66c17a203b7181992dc3ba4a",
+    "/assets/icons/icon-256x256.png": "a18e55addb8a8fee32d964459862ea223b94405c",
+    "/assets/icons/icon-512x512.png": "f6d646e0891b8f9a6cbe9c03d7f52bac6e76d63b",
+    "/assets/icons/icon-72x72.png": "eb50d80abe4542787284d39ea4c97553ff8aa98b",
+    "/assets/icons/icon-96x96.png": "5c2aeb901eed17f6a248a364bbdd73e9f5405804",
+    "/assets/icons/mdpi.png": "8fc499065ae9d59a855b6056192879d9bd616fe7",
+    "/assets/icons/xhdpi.png": "cced1649f5c7886d9d7dcfcfe71a21c977903eaf",
+    "/assets/icons/xxhdpi.png": "ce99c413380bffb954799ffc9c606b651358a144",
+    "/assets/money-2696229.jpg": "98a363ee1629555b4ee09f249d47990753670c6f",
+    "/favicon.ico": "030b5ba9b118f58e3126dbdde7eb804a3534da2d",
+    "/index.html": "f0544c4eddc782599942f8f73350cfaf5a08ea57",
+    "/main-es2015.3b787c503f59d54b5d02.js": "9ec53e5a7fcd55c5d0c398bf658f200a5e5279f7",
+    "/main-es5.3b787c503f59d54b5d02.js": "a02298d69f1eee083721f25687914dae77c7cde6",
+    "/manifest.webmanifest": "051c7b8b3d6e3bf4445ef4adabc16a44cd1ddba6",
+    "/money-2696229.0cff5527c8560eeaf6c2.jpg": "98a363ee1629555b4ee09f249d47990753670c6f",
+    "/polyfills-es2015.e4301f567d405fdace91.js": "e6b84cc8ad55e60dc9c545bff8d59ada3c26519d",
+    "/polyfills-es5.e6357a4e63f9e93d4fef.js": "c02e6ef9a9242acc40328d51992f8d8b94af2131",
+    "/runtime-es2015.c5fa8325f89fc516600b.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/runtime-es5.c5fa8325f89fc516600b.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/scripts.86b70c7c463b077c1a6b.js": "a5d9652662ae4b287e5907b7b198b941b9cd571e",
+    "/styles.16284bfbe542db3eff6c.css": "47a48336b3209a442b13e15fd59eee001782aa32"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}

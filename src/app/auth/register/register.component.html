@@ -1,0 +1,148 @@
+
+
+<div class="wall">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="margin-top: 3rem;">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign Up</h5>
+          <form class="form-signin" (submit)="onRegister(form)"  [formGroup]="form" #myform="ngForm" >
+            <div class="form-label-group">
+              <input type="text" id="firstname" class="form-control"
+              formControlName="firstname"
+              name="firstname"
+              placeholder="Enter your First Name"
+              [ngClass]="{'is-invalid': form.get('firstname').touched && form.get('firstname').invalid ,'is-valid': form.get('firstname').touched && !form.get('firstname').invalid }"
+
+
+              required autofocus>
+              <div
+              *ngIf="form.get('firstname').invalid && form.get('firstname').touched"
+              class="alert alert-danger"
+            >
+              <div *ngIf="form.get('firstname').errors.required" >
+                Firstname is required.
+
+              </div>
+              <div *ngIf="form.get('firstname').errors.minlength">
+                Firstname must be at least 3 characters long.
+              </div>
+            </div>
+              <label for="firstname"></label>
+
+
+            </div>
+            <div class="form-label-group">
+              <input type="text" id="lastname" class="form-control"
+              formControlName="lastname"
+              name="lastname"
+              placeholder="Enter your Last Name"
+              [ngClass]="{'is-invalid': form.get('lastname').touched && form.get('lastname').invalid  ,'is-valid': form.get('lastname').touched && !form.get('lastname').invalid   }"
+              required autofocus>
+              <div
+              *ngIf="form.get('lastname').invalid && form.get('lastname').touched"
+              class="alert alert-danger"
+            >
+              <div *ngIf="form.get('lastname').errors.required">
+                Lastname is required.
+              </div>
+
+            </div>
+
+              <label for="lastname"></label>
+            </div>
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" class="form-control"
+              formControlName="email"
+                  email="true"
+                  name="email"
+                  placeholder="Enter your email"
+                  [ngClass]="{'is-invalid': form.get('email').touched && form.get('email').invalid ,'is-valid': form.get('email').touched && !form.get('email').invalid  }"
+                 pattern="^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"
+              required autofocus>
+              <div
+              *ngIf="form.get('email').invalid && form.get('email').touched"
+              class="alert alert-danger"
+            >
+            <div *ngIf="form.get('email').errors.required" >
+              Email is required.
+
+            </div>
+              <div *ngIf="form.get('email').errors.pattern">
+                <span style="color:red">Email not Valid</span>
+              </div>
+            </div>
+    <small id="emailHelp" class="form-text text-muted" style="margin-left: 1rem;"> We'll never share your email with anyone else.</small>
+
+              <label for="inputEmail"></label>
+
+            </div>
+
+            <div class="form-label-group">
+              <input type="number" id="mblno" class="form-control"
+              placeholder="Mobile Number"
+              name="mblno"
+              formControlName="mblno"
+              minlength="10"
+              maxlength="10"
+              pattern="^(\+\d{1,3}[- ]?)?\d{10}$"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              [ngClass]="{'is-invalid': form.get('mblno').touched && form.get('mblno').invalid,'is-valid': form.get('mblno').touched && !form.get('mblno').invalid  }"
+
+              required autofocus>
+              <div *ngIf="form.get('mblno').invalid && (form.get('mblno').touched)"
+              class="alert alert-danger">
+               <div *ngIf="form.get('mblno').errors.required">
+                Mobile Number not Valid
+              </div>
+              <div *ngIf="form.get('mblno').errors.pattern">
+                <span style="color:red">Number not Valid</span>
+             </div>
+
+          </div>
+              <label for="mblno"></label>
+            </div>
+
+            <div class="form-label-group">
+
+              <input type="text" id="inputPassword" class="form-control"
+               placeholder="Password"
+               formControlName="password"
+               name="password"
+               placeholder="Password"
+               pattern="(?=^.{6,15}$)(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$"
+               [ngClass]="{'is-invalid': form.get('password').touched && form.get('password').invalid ,'is-valid': form.get('password').touched && !form.get('password').invalid  }"
+               required>
+               <div *ngIf="form.get('password').invalid && (form.get('password').touched)"
+              class="alert alert-danger">
+               <div *ngIf="form.get('password').errors.required">
+                Password not Valid
+              </div>
+              <div *ngIf="form.get('password').errors.pattern">
+                <span style="color:red"> It expects atleast 1 small-case letter, 1 Capital letter,
+                  1 digit, 1 special character and the length should be between 6-15 characters.
+                </span>
+             </div>
+
+          </div>
+          <small id="emailHelp" class="form-text text-muted" style="margin-left: 1rem;">It expects  6-15 characters , atleast  1 Capital letter,
+            1 digit, 1 special character.
+          </small>
+            </div>
+
+<br>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" style="background-color: #130f40;" type="submit">Sign up</button>
+            <hr class="my-3">
+
+            <div class="form-label-group">
+              <label for="inputPassword">Already have an account ? <a style="color:#EE5A24;" [routerLink]="['/login']" routerLinkActive="router-link-active" >Signin</a> </label>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

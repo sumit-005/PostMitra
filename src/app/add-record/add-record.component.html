@@ -1,0 +1,165 @@
+
+
+
+
+  <div class="container-fluid"style="width: 100%;margin: 0;padding-top: 7rem;">
+
+
+    <button class="btn btn-primary" *ngIf="flag" (click)="flag = false" style="height: 2.5rem; margin: 1rem 2rem;">IMPORT BULK RECORDS</button>
+    <button class="btn btn-primary" *ngIf="!flag && !viewTable" (click)="flag = true" style="height: 2.5rem;  margin: 1rem 2rem;">ADD SINGLE RECORD</button>
+    <button class="btn btn-success" *ngIf="viewTable"  data-toggle="modal" data-target="#exampleModal" style="height: 2.5rem;  margin: 1rem 2rem;">Confirm the import</button>
+    <button class="btn btn-danger" *ngIf="viewTable" (click)="onRemove($event)" style="height: 2.5rem;  margin: 1rem 2rem;">Cancel the import</button>
+
+    <div *ngIf="loader">
+      <div class="loading">Loading&#8230;</div>
+    </div>
+    <div class="container" *ngIf="!loader" >
+
+      <div class="row">
+
+    <small style="color: #dc4c4d; text-decoration: underline;" *ngIf="viewTable">
+      Note: Default and Card Number will not be imported into Database. Please enter it manually.
+    </small>
+
+        <table class="table table-light table-bordered table-hover table-striped" style="table-layout:fixed;height: 100%;"
+    id="excel-table" *ngIf="viewTable" >
+
+    <thead>
+      <tr class="table-active">
+        <th scope="col" style="width: 10%;padding-right: 5px;margin-right: 5px;">#</th>
+        <th scope="col" style="width: 30%;" >Name</th>
+        <th scope="col" style="width: 30%;">Account No</th>
+        <th scope="col" style="width: 30%;" >Amount</th>
+        <th scope="col" style="width: 30%;" >TotalAmount</th>
+        <th scope="col" style="width: 30%;" >Card Number</th>
+        <th scope="col" style="width: 30%;" >Default</th>
+        <th scope="col" style="width: 30%;" >Joining Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of importRecords;let i = index">
+        <td scope="row" style="width: 10%;">{{i+1}}</td>
+        <td style="width: 30%;">{{item.name}}</td>
+        <td style="width: 30%;">{{item.accountno}}</td>
+        <td style="width: 30%;">{{item.amount}}</td>
+        <td style="width: 30%;">{{item.totalAmount}}</td>
+        <td style="width: 30%;background-color: #eca1a2;">{{item.cardnumber}}</td>
+        <td style="width: 30%;background-color: #eca1a2;">{{item.default}}</td>
+        <td style="width: 30%;">{{item.joiningDate  | date : 'dd-MM-yyyy'}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+
+  <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure to you want to make the import?
+        </div>
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" (click)="importData()"  data-dismiss="modal" class="btn btn-success">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="row" >
+
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="border: 2px solid #130f40  ;padding: 30px;border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.6);" *ngIf="flag && !viewTable">
+
+
+  <form [formGroup]="form"
+  (submit)="onSubmit(form)">
+
+  <h3 style="margin:0px auto 1.2rem;text-align: center;" >ADD ACCOUNT</h3>
+
+    <div class="form-group">
+      <label for="accountno">Account Number</label>
+      <input type="number" class="form-control" id="accountno" formControlName="accountno" placeholder="Enter Account Number">
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter Full Name">
+    </div>
+    <div class="form-row">
+      <div class="col-sm-6 col-md-6 mb-3">
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" class="form-control" (change)="takeAmount()" [(ngModel)]="amount" id="amount" formControlName="amount" placeholder="Enter Amount">
+    </div>
+      </div>
+      <div class="col-sm-6 col-md-6 mb-3">
+        <div class="form-group">
+          <label for="amount">Joining Date</label><br>
+        <div class="input-group mb-3">
+          <!-- <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"> -->
+          <input matInput class="form-control" placeholder="Enter Joining Date"   (dateInput)="changedate($event.target.value)"  formControlName="joiningDate"  [min]="minDate" [max]="maxDate" [matDatepicker]="joiningDate">
+          <div class="input-group-prepend" style="height: 40px;">
+            <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon1"> -->
+              <mat-datepicker-toggle  matSuffix [for]="joiningDate"></mat-datepicker-toggle>
+              <mat-datepicker #joiningDate></mat-datepicker>
+          </div>
+          </div>
+
+        </div>
+
+    </div>
+
+
+  </div>
+    <div class="form-group">
+      <label for="date">Total Amount</label>
+      <input type="number" class="form-control" id="totalAmount" [(ngModel)]="totalamount" formControlName="totalAmount" placeholder="Enter total amount">
+    </div>
+
+
+    <button type="submit"  style="text-align: right;float: right; background-color:#130f40 ;" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="border: 2px solid #130f40  ;padding: 30px;border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.6);" *ngIf="!flag && !viewTable">
+
+
+  <form (submit)="onUpload()">
+
+
+  <h3 style="margin:0px auto 1.2rem;text-align: center;" >IMPORT BULK RECORDS</h3>
+  <div class="form-group">
+    <label for="amount">Upload Excel File</label>
+
+    <ngx-dropzone (change)="onSelect($event)" [accept]="accept" [multiple]="false" >
+      <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+      <ngx-dropzone-preview  ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"  [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label>{{ f.name }} </ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+
+
+    </div>
+    <button type="submit"  style="text-align: right;float: right; background-color:#130f40 ;" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+
+
+
+  </div>
+      </div>
+
+

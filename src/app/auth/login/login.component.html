@@ -1,0 +1,48 @@
+
+ <div class="wall">
+<div class="container" >
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="margin-top: 5rem;">
+      <div class="card card-signin my-5">
+        <div class="card-body" >
+          <h5 class="card-title text-center">Sign In</h5>
+          <form class="form-signin" form (submit)="onLogin(postForm)"  #postForm="ngForm">
+            <div class="form-label-group">
+              <input type="text"  class="form-control"
+              placeholder="Email Id"
+              ngModel name="email"
+              #email="ngModel"
+              required autofocus
+              style="height: 40px;">
+              <label for="inputName"></label>
+            </div>
+            <div class="form-label-group">
+              <input type="password" id="inputPassword" class="form-control"
+               placeholder="Password"
+               ngModel name="password"
+               #password="ngModel"
+               style="height: 40px;"
+               required>
+              <label for="inputPassword"></label>
+            </div>
+
+<br>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" style="background-color: #130f40;" type="submit">Sign in</button>
+            <hr class="my-3">
+
+            <div class="form-label-group">
+              <label for="inputPassword"> Dont't have a account? <a [routerLink]="['/register']" routerLinkActive="router-link-active"  style="color: #EE5A24;" >Signup</a> </label>
+            </div>
+
+            <div class="form-label-group">
+              <label for="inputPassword"> <a style="color: #130f40;" routerLink="/reset"> Forget UserName / Password</a> </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ </div>
+

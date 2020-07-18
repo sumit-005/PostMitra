@@ -1,0 +1,15 @@
+input:disabled {
+  background: #CAD3C8;
+}
+
+input:read-only{
+  background:#CAD3C8 ;
+}
+
+select:readonly {
+  background: #CAD3C8;
+}
+
+.cdk-overlay-container {
+  z-index: 1200;
+}

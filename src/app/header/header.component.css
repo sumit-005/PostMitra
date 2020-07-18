@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap");
+
+.navbar {
+  background-image: linear-gradient(
+    to bottom,
+    #c8c8c8,
+    #bcbcbc,
+    #b0b0b0,
+    #a5a5a5,
+    #969696
+  );
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+
+
+
+@media screen and (min-width: 573px) {
+  ul li {
+    border-radius: 30px;
+    background-color: aliceblue;
+    margin: 0 10px;
+  }
+
+  ul li a {
+    padding: 5px 10px;
+    color: #130f40;
+
+  }
+
+
+ul li a:hover,
+ul li a:active{
+  background-color: #130f40;
+  color: aliceblue;
+  border-radius: 30px;
+
+
+
+
+}
+}
+
+@media screen and (max-width: 573px) {
+  ul li a {
+    background-color: transparent;
+  }
+
+  ul li {
+    width: 160px;
+    margin: 5px;
+  }
+}
